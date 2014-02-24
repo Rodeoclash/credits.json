@@ -2,13 +2,13 @@
 
 Machine readable data format that describes the creators of a website.
 
-## Wait a minute, isn't this humans.txt?
+### Wait a minute, isn't this humans.txt?
 
 Not quite. Humans.txt is a great effort but it's not easily machine parsable[0], in fact, being easily machine parsable defeats the purpose of humans.txt (that is, making it easy for humans to read!).
 
 [0] - Just have a look at the differences between [Google's](https://www.google.com/humans.txt), [Github's](https://www.github.com/humans.txt) and [humanstxt.org's](http://humanstxt.org/humans.txt)
 
-## Ok, but why?
+### Ok, but why?
 
 With a credits.json file it makes it easy to track what websites you've built over the internet, not only that, you can prove you worked on the site because the credits.json actually exists on the site that you build. Once the credits.json is in place, it's easy to automatically pull information from it. This makes it easy to generate portfolio websites and build a history of the work you've done.
 
@@ -16,7 +16,7 @@ With a credits.json file it makes it easy to track what websites you've built ov
 
 At the moment it's just two of us but the purpose of creating this repository is to get input from everyone on what the credits.json format should include. If you've got some ideas or suggestions, please fork, implement and make a pull request so everyone can discuss the changes. As well as an open discussion that will shape the format, it is also licensed using the Apache License.
 
-## Ok, show me what it looks like
+### Ok, show me what it looks like
 
 ```
 {
@@ -63,7 +63,7 @@ Let's explore the format in a bit more detail:
 }
 ```
 
-The credits.json format is versioned, at the moment we are arbitrarily at version 0.1. We will freeze the standard at 1.0 then begin work on version 2.0 when needed. 
+The credits.json format is versioned, at the moment we are arbitrarily at version 0.1. We will freeze the format at 1.0 then begin work on version 2.0 when needed. 
 
 #### Created at
 
@@ -100,6 +100,6 @@ Two top level entities are allowed in the format, the first of which is Organisa
 
 Represents people involved in the project.  They can either belong to the organisation or independently, in the case of contractors / consultants.  Id a unique identifier for a person.  The id is a SHA256 hash of an email address.
 
-## More resources
+### More resources
 
 * credits.json generator coming soon
