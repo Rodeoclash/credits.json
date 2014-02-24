@@ -10,7 +10,7 @@ Not quite. Humans.txt is a great effort but it's not easily machine parsable[0],
 
 ## Ok, but why?
 
-With a credits.json file it makes it easy to track what websites you've built over the internet, not only that, you can proove you worked on the site because the credits.json actually exists on the site that you build. Once the credits.json is in place, it's easy to automatically pull information from it. This makes it easy to generate portfolio websites and build a history of the work you've done.
+With a credits.json file it makes it easy to track what websites you've built over the internet, not only that, you can prove you worked on the site because the credits.json actually exists on the site that you build. Once the credits.json is in place, it's easy to automatically pull information from it. This makes it easy to generate portfolio websites and build a history of the work you've done.
 
 ## Who's making this? Who's in control of it?
 
@@ -33,7 +33,7 @@ At the moment it's just two of us but the purpose of creating this repository is
       people: [
         {
           name: "John Doe",
-          email: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+          id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
           roles: ['Design', 'Front end development'],
           location: "123 Street, My City, A Country",
           homepage: "http://www.example.com"
@@ -44,7 +44,7 @@ At the moment it's just two of us but the purpose of creating this repository is
   people: [
     {
       name: "Jane Doe",
-      email: "$2a$10$Rs2//C.zRkfYeXiZwp.vuutbkKV6mxR5Xnpo8D/oShsrj9VTIf/Mm",
+      id: "$2a$10$Rs2//C.zRkfYeXiZwp.vuutbkKV6mxR5Xnpo8D/oShsrj9VTIf/Mm",
       roles: ['Backend end development'],
       location: "123 Street, My City, A Country",
       homepage: "http://www.example.com"
@@ -85,9 +85,21 @@ The date the credits.json file was created. This is generally the date the site 
 }
 ```
 
-Two top level entities are allowed in the format, the first os which is Organisations. These represent the business entities that worked on the site for the **client**.
+Two top level entities are allowed in the format, the first of which is Organisations. These represent the business entities that worked on the site for the **client**.
+
+#### People
+```
+{
+  name: "John Doe",
+  id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+  roles: ['Design', 'Front end development'],
+  location: "123 Street, My City, A Country",
+  homepage: "http://www.example.com"
+}
+```
+
+Represents people involved in the project.  They can either belong to the organisation or independently, in the case of contractors / consultants.  Id a unique identifier for a person.  The id is a SHA256 hash of an email address.
 
 ## More resources
 
 * credits.json generator coming soon
-* site portfolio website coming soon
