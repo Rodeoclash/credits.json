@@ -19,6 +19,9 @@ At the moment it's just two of us but the purpose of creating this repository is
 ```
 {
   version: "0.1",
+  client: {
+    client: "todo"
+  },
   organisations: [
     {
       name: "The Super Design Agency",
@@ -47,9 +50,27 @@ At the moment it's just two of us but the purpose of creating this repository is
 }
 ```
 
-Ok, some notes on the format.
+Let's explore the format in a bit more detail:
 
-* Note that the email addressed is hashed using bcrypt, this means you can keep a consistent email id for the different sites you've worked on without incurring spam.
+### Version
+
+```
+version: "0.1"
+```
+
+The credits.json format is versioned, at the moment we are arbitrarily at version 0.1. We will freeze the standard at 1.0 then begin work on version 2.0 when needed. 
+
+### Organisations
+
+```
+{
+  name: "The Super Design Agency",
+  location: "123 Street, My City, A Country",
+  homepage: "http://www.example.com",
+}
+```
+
+Two top level entities are allowed in the format, the first os which is Organisations. These represent the business entities that worked on the site.
 
 ## More resources
 
