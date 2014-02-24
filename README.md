@@ -63,64 +63,135 @@ This node represents a person or multiple people involved in the project and is 
 }
 ```
 
-Let's take a closer look at the fields under a person:
+Let's take a closer look at the fields under a person. Required fields are in bold.
 
 | Field        | Description   |
 | :------------|:--------------|
 | id           | This is a bcrypt hash of the persons email address. It's used to track a person working over multiple sites. |
-| name         | The persons name or alias. |
-| location     | A specific or non specific location of where the work on the site was performed. |
-| more         | Further details about the user that can be found around the internet. |
+| **name**     | The persons name or alias. |
+| location     | A specific or non specific location of where the work was performed. |
+| more         | Further details about the user that can be found around the internet, e.g. a stack overflow profile or twitter handle. |
 
-People can also work on a site via an organisation, see below for more details.
+People can also work on a site via [organisations](#organisations).
 
-#### Organisations
+#### Organisations <a name="organisations"></a>
+This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format.
+
+```
+{
+  id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+  name: "The Super Design Agency",
+  location: "123 Street, My City, A Country",
+  more: {
+    twitter: "@handle",
+    stack_overflow: "stackoverflow.com/users/151433/samuel",
+    homepage: "http://www.example.com"
+  }
+}
+```
+
+Let's take a closer look at the fields under an organisation. Required fields are in bold.
+
+| Field        | Description   |
+| :------------|:--------------|
+| id           | This is a bcrypt hash of the organisations homepage. It's used to track an organisation working over multiple sites. |
+| **name**     | The organisations name. |
+| location     | A specific or non specific location of where the work was performed. |
+| more         | Further details about the organisation that can be found around the internet, e.g. a twitter handle or homepage. |
+
+Organisations can also nest people under them if that person performed the work when working for the organisation. Here is a simplified organisation that contains two people working under it.
 
 ```
 {
   name: "The Super Design Agency",
-  location: "123 Street, My City, A Country",
-  homepage: "http://www.example.com",
+  people: [
+    {
+      id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+      name: "John Doe",
+      roles: ['Design', 'Front end development'],
+      location: "123 Street, My City, A Country",
+      more: {
+        twitter: "@handle",
+        stack_overflow: "stackoverflow.com/users/151433/samuel",
+        homepage: "http://www.example.com"
+      }
+    },
+    {
+      id: "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
+      name: "Jane Doe",
+      roles: ['Back end development'],
+      location: "123 Street, My City, A Country",
+      more: {
+        twitter: "@handle",
+        homepage: "http://www.example.com"
+      }
+    }
+  ]
 }
 ```
 
-Two top level entities are allowed in the format, the first of which is Organisations. This represents business like entities that worked on the site for the [client](#client).
-
 #### Client <a name="client"></a>
+This single node in the root represents the subject the work was performed for.
 
-### Putting it all together
 ```
 {
-  version: "0.1",
-  created_at: "2014-02-22",
-  client: {
-    client: "todo"
-  },
-  organisations: [
+  name: "The Comfy Bed Company",
+  location: "123 Street, My City, A Country",
+  more: {
+    twitter: "@handle"
+  }
+}
+```
+
+Note the lack of an id field for the client, instead we track the domain name the credits.json file is located on.
+
+Let's take a closer look at the fields under a client. Required fields are in bold.
+
+| Field        | Description   |
+| :------------|:--------------|
+| **name**     | The clients name. |
+| location     | A specific or non specific location of where the client is located. |
+| more         | Further details about the client that can be found around the internet, e.g. a twitter handle |
+
+### Putting it all together
+This is an example of a complete credits.json file.
+```
+{
+  organsiations: [
     {
       name: "The Super Design Agency",
-      location: "123 Street, My City, A Country",
-      homepage: "http://www.example.com",
       people: [
         {
-          name: "John Doe",
           id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+          name: "John Doe",
           roles: ['Design', 'Front end development'],
           location: "123 Street, My City, A Country",
-          homepage: "http://www.example.com"
+          more: {
+            twitter: "@handle",
+            stack_overflow: "stackoverflow.com/users/151433/samuel",
+            homepage: "http://www.example.com"
+          }
+        },
+        {
+          id: "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
+          name: "Jane Doe",
+          roles: ['Back end development'],
+          location: "123 Street, My City, A Country",
+          more: {
+            twitter: "@handle",
+            homepage: "http://www.example.com"
+          }
         }
       ]
     }
   ],
-  people: [
-    {
-      name: "Jane Doe",
-      id: "$2a$10$Rs2//C.zRkfYeXiZwp.vuutbkKV6mxR5Xnpo8D/oShsrj9VTIf/Mm",
-      roles: ['Backend end development'],
-      location: "123 Street, My City, A Country",
-      homepage: "http://www.example.com"
+  client: {
+    name: "The Comfy Bed Company",
+    location: "123 Street, My City, A Country",
+    more: {
+      twitter: "@handle"
     }
-  ]
+  }
 }
 ```
 
