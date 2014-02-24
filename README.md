@@ -98,11 +98,7 @@ Two top level entities are allowed in the format, the first of which is Organisa
 }
 ```
 
-Represents people involved in the project.  They can either belong to the organisation or independently, in the case of contractors / consultants.
-
-##### Id
-
-Id a unique identifier for a person.  The id is a SHA256 hash of an email address.
+Represents people involved in the project.  They can either belong to the organisation or independently, in the case of contractors / consultants.  Id a unique identifier for a person.  The id is a SHA256 hash of an email address.
 
 ## More resources
 
