@@ -12,7 +12,7 @@ With a credits.json file it makes it easy to track what websites you've built ov
 
 ## Who's making this? Who's in control of it?
 
-At the moment it's just two of us but the purpose of creating this repository is to get input from everyone on what the credits.json format should include. If you've got some ideas or suggestions, please fork, implement and make a pull request so everyone can discuss the changes.
+At the moment it's just two of us but the purpose of creating this repository is to get input from everyone on what the credits.json format should include. If you've got some ideas or suggestions, please fork, implement and make a pull request so everyone can discuss the changes. As well as an open discussion that will shape the format, it is also licensed using the Apache License.
 
 ## Ok, show me what it looks like
 
@@ -70,7 +70,7 @@ The credits.json format is versioned, at the moment we are arbitrarily at versio
 }
 ```
 
-Two top level entities are allowed in the format, the first os which is Organisations. These represent the business entities that worked on the site.
+Two top level entities are allowed in the format, the first os which is Organisations. These represent the business entities that worked on the site for the **client**.
 
 ## More resources
 
