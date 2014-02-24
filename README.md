@@ -4,17 +4,25 @@ Machine readable data format that describes the creators of a website.
 
 ### Isn't this humans.txt?
 
-Not quite. Humans.txt is a great effort but it's not easily machine parsable[^different-humans-txt], in fact, being machine parsable would almost defeat the purpose of humans.txt.
+Humans.txt is great but it's not machine parsable[0], in fact being machine parsable would almost defeat the purpose of humans.txt. credits.json is similar in the sense that it provides information about who built the site but the key difference is that it's in a strict format which is easily machine parsable.
 
-[^different-humans-txt]: Just have a look at the differences between [Google's](https://www.google.com/humans.txt), [Github's](https://www.github.com/humans.txt) and [humanstxt.org's](http://humanstxt.org/humans.txt)
+[0]: Just have a look at the differences between [Google's](https://www.google.com/humans.txt) and [Github's](https://www.github.com/humans.txt) humans.txt files.
 
 ### Ok, but why?
 
-With a credits.json file it makes it easy to track what websites you've built over the internet, not only that, you can prove you worked on the site because the credits.json actually exists on the site that you build. Once the credits.json is in place, it's easy to automatically pull information from it. This makes it easy to generate portfolio websites and build a history of the work you've done.
+* It proves that a person worked on a particular website, along with what they did to help produce.
+* It makes it possible to write tools that can analyse who worked on a site and which other sites they worked on.
+* It gives recognition to the builders of a site.
 
 ### Who's making this?
 
-At the moment it's just two of us but the purpose of creating this repository is to get input from everyone on what the credits.json format should include. If you've got some ideas or suggestions, please fork, implement and make a pull request so everyone can discuss the changes. As well as an open discussion that will shape the format, it is also licensed using the Apache License.
+We've[0] started designing the format but we want everyone who produces websites to be involved. Part of the problem with the original humans.txt is that it was created by just one person and this has introduced limitations into the format. We want to avoid this by gathering as much feedback as possible and incorporating it into the formaat.
+
+If you want to get involved, please fork the project, make your changes then submit a pull request for discussion.
+
+We want this format to be as open as possible so we've picked the Apache License, however if you feel this isn't a good choice, we are happy to change this.
+
+[0]: [Sam](https://github.com/Rodeoclash) and [Riley](https://github.com/rjaus)
 
 ## The Format
 
@@ -39,6 +47,8 @@ The credits.json format is versioned so we can handle changes to the format with
 The date the credits.json file was created. This is used for tracking snapshots of the site over time.
 
 #### Person
+This node represents a person or multiple people involved in the project and is present as an array in the root of the format.
+
 ```
 {
   id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
@@ -53,14 +63,16 @@ The date the credits.json file was created. This is used for tracking snapshots 
 }
 ```
 
-This node represents a person or multiple people involved in the project. People can work directly on a project or via an organisation. Let's take a closer look at the fields under a person:
+Let's take a closer look at the fields under a person:
 
 | Field        | Description   |
-| :-----------:|:-------------:|
+| :------------|:--------------|
 | id           | This is a bcrypt hash of the persons email address. It's used to track a person working over multiple sites. |
 | name         | The persons name or alias. |
 | location     | A specific or non specific location of where the work on the site was performed. |
 | more         | Further details about the user that can be found around the internet. |
+
+People can also work on a site via an organisation, see below for more details.
 
 #### Organisations
 
@@ -76,7 +88,7 @@ Two top level entities are allowed in the format, the first of which is Organisa
 
 #### Client <a name="client"></a>
 
-#### The full format
+### Putting it all together
 ```
 {
   version: "0.1",
@@ -112,6 +124,10 @@ Two top level entities are allowed in the format, the first of which is Organisa
 }
 ```
 
-### More resources
+#### Other resources
 
 * credits.json generator coming soon
+
+#### Changelog
+
+* First version
