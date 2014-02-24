@@ -12,11 +12,11 @@ Not quite. Humans.txt is a great effort but it's not easily machine parsable[^di
 
 With a credits.json file it makes it easy to track what websites you've built over the internet, not only that, you can prove you worked on the site because the credits.json actually exists on the site that you build. Once the credits.json is in place, it's easy to automatically pull information from it. This makes it easy to generate portfolio websites and build a history of the work you've done.
 
-## Who's making this?
+### Who's making this?
 
 At the moment it's just two of us but the purpose of creating this repository is to get input from everyone on what the credits.json format should include. If you've got some ideas or suggestions, please fork, implement and make a pull request so everyone can discuss the changes. As well as an open discussion that will shape the format, it is also licensed using the Apache License.
 
-Let's explore the format in a bit more detail.
+## The Format
 
 #### Version
 
