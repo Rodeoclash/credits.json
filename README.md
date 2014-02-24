@@ -16,8 +16,67 @@ With a credits.json file it makes it easy to track what websites you've built ov
 
 At the moment it's just two of us but the purpose of creating this repository is to get input from everyone on what the credits.json format should include. If you've got some ideas or suggestions, please fork, implement and make a pull request so everyone can discuss the changes. As well as an open discussion that will shape the format, it is also licensed using the Apache License.
 
-### Ok, show me what it looks like
+Let's explore the format in a bit more detail.
 
+#### Version
+
+```
+{
+  version: "0.1"
+}
+```
+
+The credits.json format is versioned so we can handle changes to the format without breaking previous releases. Version 1.0 will be the first public release with point releases afterwards to deal with omissions. Major releases (e.g. 2.0) are reserved for format breaking changes.
+
+#### Created at
+
+```
+{
+  created_at: "2014-02-22"
+}
+```
+
+The date the credits.json file was created. This is used for tracking snapshots of the site over time.
+
+#### Person
+```
+{
+  id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+  name: "John Doe",
+  roles: ['Design', 'Front end development'],
+  location: "123 Street, My City, A Country",
+  more: {
+    twitter: "@handle",
+    stack_overflow: "stackoverflow.com/users/151433/samuel",
+    homepage: "http://www.example.com"
+  }
+}
+```
+
+This node represents a person or multiple people involved in the project. People can work directly on a project or via an organisation. Let's take a closer look at the fields under a person:
+
+| Field         | Description   |
+| ------------- |:-------------:|
+| id            | This is a bcrypt hash of the persons email address. It's used to track a person working over multiple sites. |
+| name          | The persons name or alias. |
+| location      | A specific or non specific location of where the work on the site was performed. |
+| more          | Further details about the user that can be found around the internet. |
+
+#### Organisations
+
+```
+{
+  name: "The Super Design Agency",
+  location: "123 Street, My City, A Country",
+  homepage: "http://www.example.com",
+}
+```
+
+Two top level entities are allowed in the format, the first of which is Organisations. This represents business like entities that worked on the site for the [client](#client).
+
+#### Client <a name="client"></a>
+
+#### The full format
 ```
 {
   version: "0.1",
@@ -52,53 +111,6 @@ At the moment it's just two of us but the purpose of creating this repository is
   ]
 }
 ```
-
-Let's explore the format in a bit more detail:
-
-#### Version
-
-```
-{
-  version: "0.1"
-}
-```
-
-The credits.json format is versioned, at the moment we are arbitrarily at version 0.1. We will freeze the format at 1.0 then begin work on version 2.0 when needed. 
-
-#### Created at
-
-```
-{
-  created_at: "0.1"
-}
-```
-
-The date the credits.json file was created. This is generally the date the site went live and is useful for generating snapshots of the site over time.
-
-#### Organisations
-
-```
-{
-  name: "The Super Design Agency",
-  location: "123 Street, My City, A Country",
-  homepage: "http://www.example.com",
-}
-```
-
-Two top level entities are allowed in the format, the first of which is Organisations. These represent the business entities that worked on the site for the **client**.
-
-#### People
-```
-{
-  name: "John Doe",
-  id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
-  roles: ['Design', 'Front end development'],
-  location: "123 Street, My City, A Country",
-  homepage: "http://www.example.com"
-}
-```
-
-Represents people involved in the project.  They can either belong to the organisation or independently, in the case of contractors / consultants.  Id a unique identifier for a person.  The id is a SHA256 hash of an email address.
 
 ### More resources
 
