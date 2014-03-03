@@ -53,7 +53,7 @@ This node represents a person or multiple people involved in the project and is 
   name: "John Doe",
   roles: ['Design', 'Front end development'],
   location: "123 Street, My City, A Country",
-  more: {
+  extras: {
     twitter: "@handle",
     stack_overflow: "stackoverflow.com/users/151433/samuel",
     homepage: "http://www.example.com"
@@ -68,9 +68,18 @@ Let's take a closer look at the fields under a person. Required fields are marke
 | id           | This is a bcrypt hash of the persons email address. It's used to track a person working over multiple sites. |
 | name*        | The persons name or alias. |
 | location     | A specific or non specific location of where the work was performed. |
-| more         | Further details about the user that can be found around the internet, e.g. a stack overflow profile or twitter handle. |
+| extras       | [Extra details](#user_extras) about the user that are not directly related to the build on this domain. |
 
 If a person worked on a website via an organisation, they can be listed as a person belonging to an organisation instead. See [organisations](#organisations).
+
+##### User extras <a name="user_extras"></a>
+These are additional details about a user not related to the build.
+
+| Field           | Description   |
+| :---------------|:--------------|
+| homepage        | A fully qualified url to the homepage of the person or organisation. |
+| twitter_handle  | The organisations name. |
+| stackoverflow_id| The unique ID of your Stack Overflow profile. |
 
 #### Organisations <a name="organisations"></a>
 This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format.
@@ -80,7 +89,7 @@ This node represents an organisation or multiple organisations involved in the p
   id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
   name: "The Super Design Agency",
   location: "123 Street, My City, A Country",
-  more: {
+  extras: {
     twitter: "@handle",
     stack_overflow: "stackoverflow.com/users/151433/samuel",
     homepage: "http://www.example.com"
@@ -95,7 +104,7 @@ Let's take a closer look at the fields under an organisation. Required fields ar
 | id           | This is a bcrypt hash of the organisations homepage. It's used to track an organisation working over multiple sites. |
 | name*        | The organisations name. |
 | location     | A specific or non specific location of where the work was performed. |
-| more         | Further details about the organisation that can be found around the internet, e.g. a twitter handle or homepage. |
+| extras       | [Extra details](#organisation_extras) about the organisation that are not directly related to the build on this domain. |
 
 Organisations can also nest [people](#people) under them if that person performed the work when working for the organisation. Here is a simplified organisation that had two people working for them.
 
@@ -108,7 +117,7 @@ Organisations can also nest [people](#people) under them if that person performe
       name: "John Doe",
       roles: ['Design', 'Front end development'],
       location: "123 Street, My City, A Country",
-      more: {
+      extras: {
         twitter: "@handle",
         stack_overflow: "stackoverflow.com/users/151433/samuel",
         homepage: "http://www.example.com"
@@ -119,7 +128,7 @@ Organisations can also nest [people](#people) under them if that person performe
       name: "Jane Doe",
       roles: ['Back end development'],
       location: "123 Street, My City, A Country",
-      more: {
+      extras: {
         twitter: "@handle",
         homepage: "http://www.example.com"
       }
@@ -128,28 +137,13 @@ Organisations can also nest [people](#people) under them if that person performe
 }
 ```
 
-#### Client <a name="client"></a>
-This single node in the root represents the subject the work was performed for.
+##### Organisation extras <a name="organisation_extras"></a>
+These are additional details about an organisation not related to the build.
 
-```
-{
-  name: "The Comfy Bed Company",
-  location: "123 Street, My City, A Country",
-  more: {
-    twitter: "@handle"
-  }
-}
-```
-
-Note the lack of an id field for the client, instead we track the domain name the credits.json file is located on.
-
-Let's take a closer look at the fields under a client. Required fields are marked with a *.
-
-| Field        | Description   |
-| :------------|:--------------|
-| name*        | The clients name. |
-| location     | A specific or non specific location of where the client is located. |
-| more         | Further details about the client that can be found around the internet, e.g. a twitter handle |
+| Field           | Description   |
+| :---------------|:--------------|
+| homepage        | A fully qualified url to the homepage of the person or organisation. |
+| twitter_handle  | The organisations name. |
 
 ### Putting it all together
 This is an example of a complete credits.json file.
@@ -164,7 +158,7 @@ This is an example of a complete credits.json file.
           name: "John Doe",
           roles: ['Design', 'Front end development'],
           location: "123 Street, My City, A Country",
-          more: {
+          extras: {
             twitter: "@handle",
             stack_overflow: "stackoverflow.com/users/151433/samuel",
             homepage: "http://www.example.com"
@@ -175,7 +169,7 @@ This is an example of a complete credits.json file.
           name: "Jane Doe",
           roles: ['Back end development'],
           location: "123 Street, My City, A Country",
-          more: {
+          extras: {
             twitter: "@handle",
             homepage: "http://www.example.com"
           }
@@ -186,7 +180,7 @@ This is an example of a complete credits.json file.
   client: {
     name: "The Comfy Bed Company",
     location: "123 Street, My City, A Country",
-    more: {
+    extras: {
       twitter: "@handle"
     }
   }
