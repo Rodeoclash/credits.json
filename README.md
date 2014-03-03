@@ -78,8 +78,8 @@ These are additional details about a user not related to the build.
 | Field           | Description   |
 | :---------------|:--------------|
 | homepage        | A fully qualified url to the homepage of the person or organisation. |
-| twitter_handle  | The organisations name. |
-| stackoverflow_id| The unique ID of your Stack Overflow profile. |
+| twitter_handle  | The persons twitter handle. |
+| stackoverflow_id| The unique ID of a Stack Overflow profile. |
 
 #### Organisations <a name="organisations"></a>
 This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format.
@@ -143,7 +143,7 @@ These are additional details about an organisation not related to the build.
 | Field           | Description   |
 | :---------------|:--------------|
 | homepage        | A fully qualified url to the homepage of the person or organisation. |
-| twitter_handle  | The organisations name. |
+| twitter_handle  | The organisations twitter handle. |
 
 ### Putting it all together
 This is an example of a complete credits.json file.
