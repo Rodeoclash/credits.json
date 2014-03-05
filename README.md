@@ -73,26 +73,26 @@ Let's take a closer look at the fields under a person. Required fields are marke
 If a person worked on a website via an organisation, they can be listed as a person belonging to an organisation instead. See [organisations](#organisations).
 
 ##### User extras <a name="user_extras"></a>
-These are additional details about a user not related to the build.
+These are additional details about a user not directly related to the build.
 
 | Field           | Description   |
 | :---------------|:--------------|
-| homepage        | A fully qualified url to the homepage of the person or organisation. |
+| homepage        | A fully qualified url to the homepage of the person. |
 | twitter_handle  | The persons twitter handle. |
 | stackoverflow_id| The unique ID of a Stack Overflow profile. |
 
 #### Organisations <a name="organisations"></a>
-This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format.
+This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format. The main difference between an organisation and a person is the inclusion of the 'homepage' node in the root. This is required for organisations.
 
 ```
 {
   id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
   name: "The Super Design Agency",
   location: "123 Street, My City, A Country",
+  homepage: "http://www.example.com",
   extras: {
     twitter: "@handle",
     stack_overflow: "stackoverflow.com/users/151433/samuel",
-    homepage: "http://www.example.com"
   }
 }
 ```
@@ -104,6 +104,7 @@ Let's take a closer look at the fields under an organisation. Required fields ar
 | id           | This is a bcrypt hash of the organisations homepage. It's used to track an organisation working over multiple sites. |
 | name*        | The organisations name. |
 | location     | A specific or non specific location of where the work was performed. |
+| homepage     | A fully qualified url to the homepage of the organisation. |
 | extras       | [Extra details](#organisation_extras) about the organisation that are not directly related to the build on this domain. |
 
 Organisations can also nest [people](#people) under them if that person performed the work when working for the organisation. Here is a simplified organisation that had two people working for them.
@@ -111,6 +112,7 @@ Organisations can also nest [people](#people) under them if that person performe
 ```
 {
   name: "The Super Design Agency",
+  homepage: "http://www.example.com"
   people: [
     {
       id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
@@ -138,11 +140,10 @@ Organisations can also nest [people](#people) under them if that person performe
 ```
 
 ##### Organisation extras <a name="organisation_extras"></a>
-These are additional details about an organisation not related to the build.
+These are additional details about an organisation not directly related to the build.
 
 | Field           | Description   |
 | :---------------|:--------------|
-| homepage        | A fully qualified url to the homepage of the person or organisation. |
 | twitter_handle  | The organisations twitter handle. |
 
 ### Putting it all together
