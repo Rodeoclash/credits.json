@@ -53,14 +53,14 @@ This node represents a person or multiple people involved in the project and is 
 
 ```
 {
-  id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
-  name: "John Doe",
-  roles: ['Design', 'Front end development'],
-  location: "123 Street, My City, A Country",
-  extras: {
-    twitter: "@handle",
-    stack_overflow: "stackoverflow.com/users/151433/samuel",
-    homepage: "http://www.example.com"
+  "id": "e95e5c3460a8e69d34c5544b833100e2",
+  "name": "John Doe",
+  "roles": ['Design', 'Front end development'],
+  "location": "123 Street, My City, A Country",
+  "extras": {
+    "twitter": "@handle",
+    "stack_overflow": "stackoverflow.com/users/151433/samuel",
+    "homepage": "http://www.example.com"
   }
 }
 ```
@@ -69,7 +69,7 @@ Let's take a closer look at the fields under a person. Required fields are marke
 
 | Field        | Description   |
 | :------------|:--------------|
-| id           | This is a bcrypt hash of the persons email address. It's used to track a person working over multiple sites. |
+| id           | This is a md5 hash of the persons email address. It's used to track a person working over multiple sites. |
 | name*        | The persons name or alias. |
 | location     | A specific or non specific location of where the work was performed. |
 | extras       | [Extra details](#user_extras) about the user that are not directly related to the build on this domain. |
@@ -90,13 +90,13 @@ This node represents an organisation or multiple organisations involved in the p
 
 ```
 {
-  id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
-  name: "The Super Design Agency",
-  location: "123 Street, My City, A Country",
-  homepage: "http://www.example.com",
-  extras: {
-    twitter: "@handle",
-    stack_overflow: "stackoverflow.com/users/151433/samuel",
+  "id": "051ca2de48464e740a79393177336f59",
+  "name": "The Super Design Agency",
+  "location": "123 Street, My City, A Country",
+  "homepage": "http://www.example.com",
+  "extras": {
+    "twitter": "@handle",
+    "stack_overflow": "stackoverflow.com/users/151433/samuel",
   }
 }
 ```
@@ -115,28 +115,28 @@ Organisations can also nest [people](#people) under them if that person performe
 
 ```
 {
-  name: "The Super Design Agency",
-  homepage: "http://www.example.com"
-  people: [
+  "name": "The Super Design Agency",
+  "homepage": "http://www.example.com"
+  "people": [
     {
-      id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
-      name: "John Doe",
-      roles: ['Design', 'Front end development'],
-      location: "123 Street, My City, A Country",
-      extras: {
-        twitter: "@handle",
-        stack_overflow: "stackoverflow.com/users/151433/samuel",
-        homepage: "http://www.example.com"
+      "id": "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+      "name": "John Doe",
+      "roles": ['Design', 'Front end development'],
+      "location": "123 Street, My City, A Country",
+      "extras": {
+        "twitter": "@handle",
+        "stack_overflow": "stackoverflow.com/users/151433/samuel",
+        "homepage": "http://www.example.com"
       }
     },
     {
-      id: "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
-      name: "Jane Doe",
-      roles: ['Back end development'],
-      location: "123 Street, My City, A Country",
-      extras: {
-        twitter: "@handle",
-        homepage: "http://www.example.com"
+      "id": "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
+      "name": "Jane Doe",
+      "roles": ['Back end development'],
+      "location": "123 Street, My City, A Country",
+      "extras": {
+        "twitter": "@handle",
+        "homepage": "http://www.example.com"
       }
     }
   ]
@@ -156,37 +156,37 @@ This is an example of a complete credits.json file.
 {
   organsiations: [
     {
-      name: "The Super Design Agency",
-      people: [
+      "name": "The Super Design Agency",
+      "people": [
         {
-          id: "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
-          name: "John Doe",
-          roles: ['Design', 'Front end development'],
-          location: "123 Street, My City, A Country",
-          extras: {
-            twitter: "@handle",
-            stack_overflow: "stackoverflow.com/users/151433/samuel",
-            homepage: "http://www.example.com"
+          "id": "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+          "name": "John Doe",
+          "roles": ['Design', 'Front end development'],
+          "location": "123 Street, My City, A Country",
+          "extras": {
+            "twitter": "@handle",
+            "stack_overflow": "stackoverflow.com/users/151433/samuel",
+            "homepage": "http://www.example.com"
           }
         },
         {
-          id: "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
-          name: "Jane Doe",
-          roles: ['Back end development'],
-          location: "123 Street, My City, A Country",
-          extras: {
-            twitter: "@handle",
-            homepage: "http://www.example.com"
+          "id": "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
+          "name": "Jane Doe",
+          "roles": ['Back end development'],
+          "location": "123 Street, My City, A Country",
+          "extras": {
+            "twitter": "@handle",
+            "homepage": "http://www.example.com"
           }
         }
       ]
     }
   ],
-  client: {
-    name: "The Comfy Bed Company",
-    location: "123 Street, My City, A Country",
-    extras: {
-      twitter: "@handle"
+  "client": {
+    "name": "The Comfy Bed Company",
+    "location": "123 Street, My City, A Country",
+    "extras": {
+      "twitter": "@handle"
     }
   }
 }
