@@ -22,6 +22,10 @@ We want this format to be as open as possible so we've picked the Apache License
 
 [0]: [Sam](https://github.com/Rodeoclash) and [Riley](https://github.com/rjaus)
 
+## Getting started
+
+Keep in mind that the credits.json format is not yet finalised. However, if you want to see what your credits.json file will look like, we've built a beta <a href="http://www.creditsjson.com/#/generator">credits.json generator</a> that you can play around with.
+
 ## The Format
 
 #### Version
@@ -82,7 +86,7 @@ These are additional details about a user not directly related to the build.
 | stackoverflow_id| The unique ID of a Stack Overflow profile. |
 
 #### Organisations <a name="organisations"></a>
-This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format. The main difference between an organisation and a person is the inclusion of the 'homepage' node in the root. This is required for organisations.
+This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format. The main difference between an organisation and a person is the inclusion of the 'homepage' node in the root. This is required for organisations and is used to uniquely identify them.  
 
 ```
 {
