@@ -151,7 +151,19 @@ This is an example of a complete credits.json file.
 
 ```
 {
-  organsiations: [
+  "people": [
+    {
+      "email": "john.doe@example.com",
+      "name": "John Doe",
+      "roles": ['Design', 'Front end development'],
+      "location": "123 Street, My City, A Country",
+      "extras": {
+        "twitter": "@handle",
+        "homepage": "http://www.example.com"
+      }
+    }
+  ],
+  "organsiations": [
     {
       "name": "The Super Design Agency",
       "homepage": "http://www.example.com",
