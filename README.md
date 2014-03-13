@@ -53,13 +53,12 @@ This node represents a person or multiple people involved in the project and is 
 
 ```
 {
-  "id": "e95e5c3460a8e69d34c5544b833100e2",
+  "email": "john.doe@example.com",
   "name": "John Doe",
   "roles": ['Design', 'Front end development'],
   "location": "123 Street, My City, A Country",
   "extras": {
     "twitter": "@handle",
-    "stack_overflow": "stackoverflow.com/users/151433/samuel",
     "homepage": "http://www.example.com"
   }
 }
@@ -69,7 +68,7 @@ Let's take a closer look at the fields under a person. Required fields are marke
 
 | Field        | Description   |
 | :------------|:--------------|
-| id           | This is a md5 hash of the persons email address. It's used to track a person working over multiple sites. |
+| email        | Your email address, used to track your work over multiple websites. It's suggested that you use a unique email address seperate from your day to day email. |
 | name*        | The persons name or alias. |
 | location     | A specific or non specific location of where the work was performed. |
 | extras       | [Extra details](#user_extras) about the user that are not directly related to the build on this domain. |
@@ -83,14 +82,12 @@ These are additional details about a user not directly related to the build.
 | :---------------|:--------------|
 | homepage        | A fully qualified url to the homepage of the person. |
 | twitter_handle  | The persons twitter handle. |
-| stackoverflow_id| The unique ID of a Stack Overflow profile. |
 
 #### Organisations <a name="organisations"></a>
 This node represents an organisation or multiple organisations involved in the project and is present as an array in the root of the format. The main difference between an organisation and a person is the inclusion of the 'homepage' node in the root. This is required for organisations and is used to uniquely identify them.  
 
 ```
 {
-  "id": "051ca2de48464e740a79393177336f59",
   "name": "The Super Design Agency",
   "location": "123 Street, My City, A Country",
   "homepage": "http://www.example.com",
@@ -105,10 +102,9 @@ Let's take a closer look at the fields under an organisation. Required fields ar
 
 | Field        | Description   |
 | :------------|:--------------|
-| id           | This is a bcrypt hash of the organisations homepage. It's used to track an organisation working over multiple sites. |
 | name*        | The organisations name. |
 | location     | A specific or non specific location of where the work was performed. |
-| homepage     | A fully qualified url to the homepage of the organisation. |
+| homepage     | A fully qualified url to the homepage of the organisation, it is also used to track your work over multiple sites. |
 | extras       | [Extra details](#organisation_extras) about the organisation that are not directly related to the build on this domain. |
 
 Organisations can also nest [people](#people) under them if that person performed the work when working for the organisation. Here is a simplified organisation that had two people working for them.
@@ -119,7 +115,7 @@ Organisations can also nest [people](#people) under them if that person performe
   "homepage": "http://www.example.com"
   "people": [
     {
-      "id": "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+      "email": "john.doe@example.com",
       "name": "John Doe",
       "roles": ['Design', 'Front end development'],
       "location": "123 Street, My City, A Country",
@@ -130,7 +126,7 @@ Organisations can also nest [people](#people) under them if that person performe
       }
     },
     {
-      "id": "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
+      "email": "jane.doe@example.com",
       "name": "Jane Doe",
       "roles": ['Back end development'],
       "location": "123 Street, My City, A Country",
@@ -152,27 +148,26 @@ These are additional details about an organisation not directly related to the b
 
 ### Putting it all together
 This is an example of a complete credits.json file.
+
 ```
 {
   organsiations: [
     {
       "name": "The Super Design Agency",
+      "homepage": "http://www.example.com",
       "people": [
         {
-          "id": "$2a$10$JGDDOBPPnuUiwb/OSHL4du9NwbHb/ZygFJm/SXk/wl1b9NoxlHQAO",
+          "email": "john.doe@example.com",
           "name": "John Doe",
-          "roles": ['Design', 'Front end development'],
           "location": "123 Street, My City, A Country",
           "extras": {
             "twitter": "@handle",
-            "stack_overflow": "stackoverflow.com/users/151433/samuel",
             "homepage": "http://www.example.com"
           }
         },
         {
-          "id": "$2a$10$NteDK2.mFs3yxpJC2mMqfOdochI8N.wSqtvKtIXTVT3CrCkrTRk1.",
+          "email": "jane.doe@example.com",
           "name": "Jane Doe",
-          "roles": ['Back end development'],
           "location": "123 Street, My City, A Country",
           "extras": {
             "twitter": "@handle",
@@ -181,21 +176,13 @@ This is an example of a complete credits.json file.
         }
       ]
     }
-  ],
-  "client": {
-    "name": "The Comfy Bed Company",
-    "location": "123 Street, My City, A Country",
-    "extras": {
-      "twitter": "@handle"
-    }
-  }
+  ]
 }
 ```
 
 #### Other resources
-
-* credits.json generator coming soon
+* [Credits.json generator](http://creditsjson.com)
 
 #### Changelog
-
+* Minor revisions. Removed MD5 hash of email addresses.
 * First version
